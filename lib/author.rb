@@ -28,11 +28,43 @@ class Author
     @id = result.first().fetch("id").to_i
   end
 
-  def ==(album_to_compare)
-    self.name() == album_to_compare.name()
+  def ==(author_to_compare)
+    self.name() == author_to_compare.name()
   end
 
   def self.clear
     DB.exec("DELETE FROM authors *;")
   end
+
+  def self.find(id)
+  author = DB.exec("SELECT * FROM authors WHERE id = #{id};").first
+  name = author.fetch("name")
+  id = author.fetch("id").to_i
+  Author.new({:name => name, :id => id})
+end
+
+  def update(name)
+    @name = name
+    DB.exec("UPDATE authors SET name = '#{@name}' WHERE id = #{@id}")
+  end
+
+  def delete
+    DB.exec("DELETE FROM authors WHERE id = #{@id};")
+    # DB.exec("DELETE FROM books WHERE authors_id = #{@id};")
+  end
+
+  def self.sort()
+    authors = Author.all
+    authors.sort { |a, b| a.name <=> b.name }
+  end
+
+#   def songs
+#   Song.find_by_album(self.id)
+# end
+
+# def artists
+#   Artist.find_by_album(self.id)
+# end
+#
+
 end
