@@ -84,15 +84,15 @@ describe '#Book' do
   #   end
   # end
   #
-  # describe('.sort') do
-  #   it('sorts by alphebetical order') do
-  #     book1 = Book.new({:name => "Pablo Neruda", :id => nil})
-  #     book1.save()
-  #     book2 = Book.new({:name => "E. E. Cummings", :id => nil})
-  #     book2.save()
-  #     book3 = Book.new({:name => "Robert Asimov", :id => nil})
-  #     book3.save()
-  #     expect(Book.sort()).to(eq([book2, book1, book3]))
-  #   end
-  # end
+  describe('.sort') do
+    it('sorts by alphebetical order') do
+      book1 = Book.new({:name => "Pablo Neruda", :id => nil})
+      book1.save()
+      book2 = Book.new({:name => "E. E. Cummings", :id => nil})
+      book2.save()
+      book3 = Book.new({:name => "Robert Asimov", :id => nil})
+      book3.save()
+      expect(Book.sort()).to(eq([book2, book1, book3]))
+    end
+  end
 end

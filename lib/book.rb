@@ -54,11 +54,11 @@ class Book
     DB.exec("DELETE FROM books WHERE id = #{@id};")
     DB.exec("DELETE FROM books WHERE author_id = #{@id};")
   end
-  #
-  # def self.sort()
-  #   books = Book.all
-  #   books.sort { |a, b| a.name <=> b.name }
-  # end
+
+  def self.sort()
+    books = Book.all
+    books.sort { |a, b| a.name <=> b.name }
+  end
 
   #   def songs
   #   Song.find_by_album(self.id)
