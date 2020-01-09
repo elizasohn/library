@@ -36,11 +36,11 @@ class Author
   end
 
   def self.find(id)
-  author = DB.exec("SELECT * FROM authors WHERE id = #{id};").first
-  name = author.fetch("name")
-  id = author.fetch("id").to_i
-  Author.new({:name => name, :id => id})
-end
+    author = DB.exec("SELECT * FROM authors WHERE id = #{id};").first
+    name = author.fetch("name")
+    id = author.fetch("id").to_i
+    Author.new({:name => name, :id => id})
+  end
 
   def update(name)
     @name = name
@@ -57,9 +57,9 @@ end
     authors.sort { |a, b| a.name <=> b.name }
   end
 
-#   def songs
-#   Song.find_by_album(self.id)
-# end
+  # def books
+  #   Book.find_by_author(self.id)
+  # end
 
 # def artists
 #   Artist.find_by_album(self.id)

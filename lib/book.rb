@@ -39,11 +39,25 @@ class Book
   end
 
   def self.find(id)
-  book = DB.exec("SELECT * FROM books WHERE id = #{id};").first
-  name = book.fetch("name")
-  id = book.fetch("id").to_i
-  Book.new({:name => name, :id => id})
+    book = DB.exec("SELECT * FROM books WHERE id = #{id};").first
+    name = book.fetch("name")
+    id = book.fetch("id").to_i
+    Book.new({:name => name, :id => id})
   end
+  # 
+  # def self.find_by_author(id)
+  #   results = DB.exec("SELECT * FROM authors_books WHERE author_id = #{id};")
+  #   books = []
+  #   results.each {|result|
+  #     book_id = result.fetch('book_id')
+  #     book = DB.exec("SELECT * FROM books WHERE id = #{book_id};").first
+  #     name = book.fetch("name")
+  #     id = book.fetch("id").to_i
+  #     books.push(Book.new({:name => name, :id => id}))
+  #   }
+  #   books
+  # end
+
 
   def update(name)
     @name = name
@@ -69,14 +83,14 @@ class Book
   # end
   #
 
-  end
+end
 
 
- #
- #  def ==(book_to_compare)
- #   if book_to_compare != nil
- #     (self.name() == book_to_compare.name()) && (self.book_id() == book_to_compare.book_id())
- #   else
- #     false
- #   end
- # end
+#
+#  def ==(book_to_compare)
+#   if book_to_compare != nil
+#     (self.name() == book_to_compare.name()) && (self.book_id() == book_to_compare.book_id())
+#   else
+#     false
+#   end
+# end

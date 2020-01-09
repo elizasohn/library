@@ -29,17 +29,22 @@ get ('/books') do
   end
   erb(:books)
 end
-#
-# get('/albums/:id') do
-#   @album = Album.find(params[:id].to_i())
-#   erb(:album)
-# end
-#
+
 get('/authors/new') do
   erb(:new_author)
 end
+
+get('/authors/:id') do
+  @author = Author.find(params[:id].to_i())
+  erb(:author)
+end
+
+
+get('/books/new') do
+  erb(:author)
+end
 #
-# get('/albums/:id/edit') do
+# get('/authors/:id/edit') do
 #   @album = Album.find(params[:id].to_i())
 #   erb(:edit_album)
 # end
