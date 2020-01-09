@@ -34,6 +34,24 @@ get('/authors/new') do
   erb(:new_author)
 end
 
+post('/authors') do
+  author = Author.new({:name => params[:author_name], :id => nil})
+  author.save()
+  @authors = Author.all()
+  erb(:authors)
+end
+
+get ('/authors') do
+  if params["search"]
+    @authors = Author.search(params[:search])
+  elsif params["sort"]
+    @authors = Author.sort()
+  else
+    @authors = Author.all
+  end
+  erb(:authors)
+end
+
 get('/authors/:id') do
   @author = Author.find(params[:id].to_i())
   erb(:author)
@@ -57,23 +75,6 @@ end
 #   erb(:albums)
 # end
 
-post('/authors') do
-  author = Author.new({:name => params[:author_name], :id => nil})
-  author.save()
-  @authors = Author.all()
-  erb(:authors)
-end
-
-get ('/authors') do
-  if params["search"]
-    @authors = Author.search(params[:search])
-  elsif params["sort"]
-    @authors = Author.sort()
-  else
-    @authors = Author.all
-  end
-  erb(:authors)
-end
 #
 # get('/artists/new') do
 #   erb(:new_artist)
