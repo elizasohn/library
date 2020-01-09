@@ -70,20 +70,20 @@ describe '#Book' do
       expect(Book.all).to(eq([book2]))
     end
   end
-  #
-  # describe('.search') do
-  #   it("Searches for matching books by name") do
-  #     book1 = Book.new({:name => "Gabriel Garcia Marquez", :id => nil})
-  #     book1.save()
-  #     book2 = Book.new({:name => "Vladimir Nabokov", :id => nil})
-  #     book2.save()
-  #     book3 = Book.new({:name => "Milan Kundera", :id => nil})
-  #     book3.save()
-  #
-  #     expect(Book.search("Milan")).to(eq([book3]))
-  #   end
-  # end
-  #
+
+  describe('.search') do
+    it("Searches for matching books by name") do
+      book1 = Book.new({:name => "Being and Nothingness", :id => nil})
+      book1.save()
+      book2 = Book.new({:name => "The Unbearable Lightness of Being", :id => nil})
+      book2.save()
+      book3 = Book.new({:name => "Green Eggs and Ham", :id => nil})
+      book3.save()
+
+      expect(Book.search("Eggs")).to(eq([book3]))
+    end
+  end
+
   describe('.sort') do
     it('sorts by alphebetical order') do
       book1 = Book.new({:name => "Pablo Neruda", :id => nil})
