@@ -51,24 +51,24 @@ end
 #   @albums = Album.all
 #   erb(:albums)
 # end
-#
-# post('/albums') do
-#   album = Album.new(params)
-#   album.save()
-#   @albums = Album.all() # Adding this line will fix the error.
-#   erb(:albums)
-# end
-#
-# get ('/artists') do
-#   if params["search"]
-#     @artists = Artist.search(params[:search])
-#   elsif params["sort"]
-#     @artists = Artist.sort()
-#   else
-#     @artists = Artist.all
-#   end
-#   erb(:artists)
-# end
+
+post('/authors') do
+  author = Author.new({:name => params[:author_name], :id => nil})
+  author.save()
+  @authors = Author.all()
+  erb(:authors)
+end
+
+get ('/authors') do
+  if params["search"]
+    @authors = Author.search(params[:search])
+  elsif params["sort"]
+    @authors = Author.sort()
+  else
+    @authors = Author.all
+  end
+  erb(:authors)
+end
 #
 # get('/artists/new') do
 #   erb(:new_artist)

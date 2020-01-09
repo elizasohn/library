@@ -1,9 +1,8 @@
 class Author
   attr_accessor :name, :id
 
-
   def initialize(attributes)
-    @name = attributes.fetch(:name) || nil
+    @name = attributes.fetch(:name, nil)
     @id = attributes.fetch(:id, nil)
   end
 
