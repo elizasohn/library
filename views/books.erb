@@ -1,0 +1,27 @@
+<h1>READING rainbooooooooooooowww</h1>
+
+<h3>Available Books</h3>
+
+<% if @books.any? %>
+<ul>
+  <% @books.each do |book| %>
+    <li><a href="/books/<%= book.id %>"><%= book.name %></a></li>
+  <% end %>
+</ul>
+<% else %>
+<p>There are currently no books to display.</p>
+<% end %>
+
+<a href="/books/new">Add a new book</a>
+
+<form action="/books" method="get">
+  <div class="form-group">
+    <label for="search">Search</label>
+    <input id="search" name="search" class="form-control" type="text">
+  </div>
+  <button type="submit" class="btn">Go!</button>
+</form>
+
+<form action="/books" method="get">
+  <button type="submit" name="sort" class="btn">Sort!</button>
+</form>

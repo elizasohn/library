@@ -58,9 +58,33 @@ get('/authors/:id') do
 end
 
 
-get('/books/new') do
+post('/authors/:id') do
+  @author = Author.find(params[:id].to_i())
+  book = Book.new({:name => params[:book_name], :author_id => params[:id].to_i, :id => nil})
+  book.save()
+  @author.add_book(params[:book_name])
   erb(:author)
 end
+
+
+get('/books/new') do
+  erb(:new_book)
+end
+
+post('/books') do
+  puts params
+  book = Book.new({:name => params[:book_name], :id => nil})
+  book.save()
+  @books = Book.all() # Adding this line will fix the error.
+  erb(:books)
+end
+
+get('/books/:id') do
+  @book = Book.find(params[:id].to_i())
+  erb(:book)
+end
+
+
 #
 # get('/authors/:id/edit') do
 #   @album = Album.find(params[:id].to_i())
@@ -76,32 +100,14 @@ end
 # end
 
 #
-# get('/artists/new') do
+# get('/authors/new') do
 #   erb(:new_artist)
 # end
 #
 #
-# get('/artists/:id') do
-#   @artist = Artist.find(params[:id].to_i())
-#   erb(:artist)
-# end
-#
-#
-# post('/artists/:id') do
-#   @artist = Artist.find(params[:id].to_i)
-#   @artist.update({:album_name => params[:album_name]})
-#   erb(:artist)
-# end
-#
-# post('/artists') do
-#   puts params
-#   artist = Artist.new({:name => params[:artist_name], :id => nil})
-#   artist.save()
-#   @artists = Artist.all() # Adding this line will fix the error.
-#   erb(:artists)
-# end
-#
-#
+
+
+
 # patch('/artists/:id') do
 #   @artist = Artist.find(params[:id].to_i())
 #   values = *params.values

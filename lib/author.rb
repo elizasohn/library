@@ -49,7 +49,7 @@ class Author
 
   def delete
     DB.exec("DELETE FROM authors WHERE id = #{@id};")
-    # DB.exec("DELETE FROM books WHERE authors_id = #{@id};")
+    DB.exec("DELETE FROM books WHERE authors_id = #{@id};")
   end
 
   def self.sort()
@@ -57,10 +57,14 @@ class Author
     authors.sort { |a, b| a.name <=> b.name }
   end
 
-  # def books
-  #   Book.find_by_author(self.id)
-  # end
+  def books
+    Book.find_by_author(self.id)
+  end
 
+  def add_book(book_name)
+    book = Book.search(book_name).first
+    DB.exec("INSERT INTO authors_books (book_id, author_id) VALUES (#{book.id}, #{@id})")
+  end
 # def artists
 #   Artist.find_by_album(self.id)
 # end

@@ -26,7 +26,7 @@ class Book
   end
 
   def save
-    result = DB.exec("INSERT INTO books (name) VALUES ('#{@name}') RETURNING id;")
+    result = DB.exec("INSERT INTO books (name) VALUES ('#{@name}'), ('#{@author_id}') RETURNING id;")
     @id = result.first().fetch("id").to_i
   end
 
@@ -44,19 +44,19 @@ class Book
     id = book.fetch("id").to_i
     Book.new({:name => name, :id => id})
   end
-  # 
-  # def self.find_by_author(id)
-  #   results = DB.exec("SELECT * FROM authors_books WHERE author_id = #{id};")
-  #   books = []
-  #   results.each {|result|
-  #     book_id = result.fetch('book_id')
-  #     book = DB.exec("SELECT * FROM books WHERE id = #{book_id};").first
-  #     name = book.fetch("name")
-  #     id = book.fetch("id").to_i
-  #     books.push(Book.new({:name => name, :id => id}))
-  #   }
-  #   books
-  # end
+
+  def self.find_by_author(id)
+    results = DB.exec("SELECT * FROM authors_books WHERE author_id = #{id};")
+    books = []
+    results.each {|result|
+      book_id = result.fetch('book_id')
+      book = DB.exec("SELECT * FROM books WHERE id = #{book_id};").first
+      name = book.fetch("name")
+      id = book.fetch("id").to_i
+      books.push(Book.new({:name => name, :id => id}))
+    }
+    books
+  end
 
 
   def update(name)
