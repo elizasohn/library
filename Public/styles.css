@@ -1,0 +1,72 @@
+body {
+  background-color: orange;
+}
+
+.tv_control {
+  text-align: center;
+  margin-left: 250px;
+}
+#tv {
+     position: relative;
+     width: 600px;
+     height: 350px;
+     margin: 20px 0;
+     background: white;
+     border-radius: 50% / 10%;
+     color: white;
+     text-align: center;
+     text-indent: .1em;
+
+     /* opacity: 50%; */
+   }
+   #tv:before {
+     content: '';
+     position: absolute;
+     top: 10%;
+     bottom: 10%;
+     right: -5%;
+     left: -5%;
+     background: inherit;
+     border-radius: 5% / 50%;
+     opacity: 10%;
+   }
+
+   .rain {
+     padding: 10px;
+     height: 250px;
+     width: 450px;
+     /* margin: 100px; */
+   }
+.card {
+  color: white;
+  font-family: 'Anton', sans-serif;
+  background-color: red;
+  height: 350px;
+  width: 400px;
+  float: left;
+  text-align: center;
+}
+
+.card_2 {
+  color: white;
+  font-family: 'Anton', sans-serif;
+  background-color: red;
+  height: 350px;
+  width: 400px;
+  float: left;
+  text-align: center;
+  float: right;
+}
+
+
+.title {
+  height: 300px;
+  width: 400px;
+  float: left;
+
+}
+
+button {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 10px;
+}

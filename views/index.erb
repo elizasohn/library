@@ -1,56 +1,76 @@
-<h1>Reading Rainbow</h1>
+
+<div class="tv_control">
+
+  <div id="tv">
+    <img class="rain" src="/img/rain.jpg" alt="reading rainbow all red letters, rainbow gradient">
+  </div>
+</div>
+
+<!-- <span class="title">
 <h2>TAKE A LOOK, IT'S IN A BOOK</h2>
 <h3>(a reading rainbooooooooooooowww)</h3>
+<h1>Reading Rainbow</h1>
+</span> -->
 
-<h3>Available Books</h3>
 
-<% if @books.any? %>
-<ul>
-  <% @books.each do |book| %>
+
+<div class="card">
+  <h2>Available Books</h2>
+  <% if @books.any? %>
+  <ul>
+    <% @books.each do |book| %>
     <li><a href="/books/<%= book.id %>"><%= book.name %></a></li>
+    <% end %>
+  </ul>
+  <% else %>
+  <p>There are currently no books to display, wah wah.</p>
   <% end %>
-</ul>
-<% else %>
-<p>There are currently no books to display, wah wah.</p>
-<% end %>
-
-<a href="/books/new">Add a new book</a>
-
-<form action="/books" method="get">
-  <div class="form-group">
-    <label for="search">Search</label>
-    <input id="search" name="search" class="form-control" type="text">
-  </div>
-  <button type="submit" class="btn">Go!</button>
-</form>
-
-<form action="/books" method="get">
-  <button type="submit" name="sort" class="btn">Sort!</button>
-</form>
 
 
-<h3>Available Authors</h3>
+  <a href="/books/new"><img class="levar" src="/img/levar.png" alt="levar head"></a>
+  <p>click Levar to add a new book!</p>
+  <form action="/books" method="get">
+    <div class="form-group">
+      <input placeholder="Search" id="search" name="search" class="form-control" type="text">
+    </div>
+    <button type="submit" class="btn-lg btn-success">Go!</button>
+  </form>
 
-<% if @authors.any? %>
-<ul>
-  <% @authors.each do |author| %>
+  <form action="/books" method="get">
+    <button type="submit" name="sort" class="btn-lg btn-success">Sort!</button>
+  </form>
+</div>
+
+
+
+
+
+<div class="card_2">
+  <h2>Available Authors</h2>
+
+  <% if @authors.any? %>
+  <ul>
+    <% @authors.each do |author| %>
     <li><a href="/authors/<%= author.id %>"><%= author.name %></a></li>
+    <% end %>
+  </ul>
+  <% else %>
+  <p>There are currently no authors to display.</p>
   <% end %>
-</ul>
-<% else %>
-<p>There are currently no authors to display.</p>
-<% end %>
 
-<a href="/authors/new">Add a new author</a>
+  <a href="/authors/new"><img class="levar" src="/img/levar.png" alt="levar head"></a>
+  <p>click Levar to add a new book!</p>
 
-<form action="/authors" method="get">
-  <div class="form-group">
-    <label for="search">Search</label>
-    <input id="search" name="search" class="form-control" type="text">
-  </div>
-  <button type="submit" class="btn">Go!</button>
-</form>
+  <form action="/authors" method="get">
+    <div class="form-group">
 
-<form action="/authors" method="get">
-  <button type="submit" name="sort" class="btn">Sort!</button>
-</form>
+      <input placeholder="Search" id="search" name="search" class="form-control" type="text">
+    </div>
+    <button type="submit" class="btn-lg btn-success">Go!</button>
+  </form>
+
+  <form action="/authors" method="get">
+    <button type="submit" name="sort" class="btn-lg btn-success">Sort!</button>
+  </form>
+
+</div>
