@@ -57,6 +57,10 @@ get('/authors/:id') do
   erb(:author)
 end
 
+get('/authors/:id/books/:book_id') do
+  @book = Book.find(params[:id].to_i())
+  erb(:book)
+end
 
 post('/authors/:id') do
   @author = Author.find(params[:id].to_i())
